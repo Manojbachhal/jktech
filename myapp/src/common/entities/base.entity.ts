@@ -10,8 +10,8 @@ export abstract class BaseEntity extends TypeOrmBaseEntity {
   id: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt: string;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt: string;
 }

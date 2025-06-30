@@ -24,6 +24,7 @@ export class AuthService {
       password: await bcrypt.hash(dto.password, 10),
     });
     const savedUser = await this.userRepo.save(user);
+    delete savedUser.password;
     return { message: 'Registration successful', data: savedUser };
   }
 

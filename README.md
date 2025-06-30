@@ -7,6 +7,8 @@ A full-featured, production-grade monolithic NestJS backend that includes:
 - 🔁 Ingestion Trigger to Python backend using Axios
 - ⚙️ Modular structure with reusable services
 - 📄 Swagger API Documentation
+- 🧪 Unit testing with Jest
+- 🧪 Faker-based seed script
 
 ---
 
@@ -18,6 +20,7 @@ src/
 ├── users/                 # User entity
 ├── documents/             # Upload, Download APIs
 ├── ingestion/             # Trigger ingestion to Python service
+├── seeds/                 # Faker-based user seed script
 ├── common/
 │   ├── axios/             # backend.client.ts (Axios pre-configured)
 │   └── decorators/        # roles.decorator.ts (Role meta data for Role Guard)
@@ -42,6 +45,8 @@ src/
 | `axios`            | Makes HTTP requests to Python service |
 | `@nestjs/swagger`  | Auto-generates Swagger API docs       |
 | `class-validator`  | Validates DTOs (input schemas)        |
+| `@faker-js/faker`  | Used to generate seed/test users      |
+| `jest`             | Unit testing framework                |
 
 ## 🚀 Setup & Run
 
@@ -165,6 +170,26 @@ http://localhost:3000/api/auth/swagger
 Provides full API documentation using `@nestjs/swagger`.
 
 ---
+
+## 🧪 Unit Testing
+
+All core modules like AuthService, AuthController, UserService are testable.
+
+Run Tests:
+
+```bash
+npm run test
+```
+
+---
+
+## 🤖 Faker-based Seed Script
+
+Uses @faker-js/faker to generate bulk test users with name, email, and role.
+
+```bash
+npm run seed
+```
 
 ## 🧱 Deployment Ready
 

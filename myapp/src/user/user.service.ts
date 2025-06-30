@@ -52,4 +52,13 @@ export class UserService {
       throw new Error(error.message);
     }
   }
+
+  async findByEmail(email: string): Promise<UserDto> {
+    try {
+      let res = await this.userRepository.findOne({ where: { email } });
+      return res;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }

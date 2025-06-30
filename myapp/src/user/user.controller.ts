@@ -13,7 +13,10 @@ import { Roles } from '../common/decorators/roles/roles.decorator';
 import { RolesGuard } from '../common/guards/roles/roles.guard';
 import { ResponseWrapper } from '../common/utils/response-wrapper';
 import { UserService } from './user.service';
-import { GenericApiResponseOfFilter } from '../common/utils/generic-reponse';
+import {
+  GenericApiResponseOfFilter,
+  GenericResponse,
+} from '../common/utils/generic-reponse';
 import { UserDto, UserResponseDto } from './dto/user.dto';
 
 @ApiTags('User')
@@ -36,6 +39,19 @@ export class UserController {
         sort,
       });
       return ResponseWrapper.Paginated(res);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  @Get('email')
+  @Roles(Role.ADMIN, Role.EDITOR)
+  async findByEmail(
+    @Query('email') email: string,
+  ): Promise<GenericResponse<UserDto>> {
+    try {
+      let res: UserDto = await this.userService.findByEmail(email);
+      return ResponseWrapper.Success(res);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }

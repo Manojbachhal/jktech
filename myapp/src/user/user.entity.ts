@@ -1,7 +1,7 @@
-import { BaseEntity } from 'src/common/entities/base.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Document } from '../documents/document.entity';
 import { Role } from '../auth/enums/role.enum';
+import { BaseEntity } from '../common/entities/base.entity';
 
 @Entity('users')
 export class User extends BaseEntity {

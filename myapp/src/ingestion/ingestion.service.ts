@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
-import { lastValueFrom } from 'rxjs';
 import { pythonBackend } from '../common/axios/backend.client';
 
 @Injectable()
